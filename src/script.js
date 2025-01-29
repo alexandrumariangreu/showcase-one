@@ -21,10 +21,10 @@ hamburgerEl.addEventListener("click", function() {
 
 function inchideMeniul() {
     meniuEl.classList.add("h-0");
-    meniuEl.classList.remove("h-48");
+    meniuEl.classList.remove("h-64");
 }
 
 function deschideMeniul() {
     meniuEl.classList.remove("h-0");
-    meniuEl.classList.add("h-48");
+    meniuEl.classList.add("h-64");
 }
