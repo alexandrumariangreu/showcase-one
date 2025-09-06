@@ -563,6 +563,9 @@
   .ml-auto {
     margin-left: auto;
   }
+  .block {
+    display: block;
+  }
   .flex {
     display: flex;
   }
@@ -726,11 +729,6 @@
     @media (width >= 40rem) {
       font-size: var(--text-2xl);
       line-height: var(--tw-leading, var(--text-2xl--line-height));
-    }
-  }
-  .md\:w-5 {
-    @media (width >= 48rem) {
-      width: calc(var(--spacing) * 5);
     }
   }
   .md\:w-52 {
