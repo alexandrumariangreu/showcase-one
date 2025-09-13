@@ -28,3 +28,8 @@ function deschideMeniul() {
     meniuEl.classList.remove("h-0");
     meniuEl.classList.add("h-64");
 }
+
+Fancybox.bind("[data-fancybox]", {
+    // Your custom options
+    // https://fancyapps.com/fancybox/api/options/
+});
