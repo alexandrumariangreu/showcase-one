@@ -104,3 +104,23 @@ body {
 img {
   width: 100%;
 }
+
+/* Adăugăm stiluri CSS pentru a asigura transformări corecte */
+#hamburger {
+    /*position: relative;
+    width: 32px;
+    height: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;*/
+}
+
+#hamburger span {
+    /*display: block;
+    height: 4px;
+    width: 100%;
+    background-color: #1f2937;
+    border-radius: 2px;*/
+    transition: all 0.3s ease;
+    transform-origin: center;
+}

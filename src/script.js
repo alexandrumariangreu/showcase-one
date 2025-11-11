@@ -7,6 +7,7 @@ let meniuDeschis = false;
 // Adăugăm stiluri CSS pentru a asigura transformări corecte
 document.head.insertAdjacentHTML('beforeend', `
 <style>
+  /*
   #hamburger {
     position: relative;
     width: 32px;
@@ -25,6 +26,7 @@ document.head.insertAdjacentHTML('beforeend', `
     transition: all 0.3s ease;
     transform-origin: center;
   }
+  */
 </style>
 `);
 
