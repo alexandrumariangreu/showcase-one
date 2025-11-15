@@ -4,31 +4,7 @@ const hamburgerEl = document.getElementById("hamburger");
 const meniuEl = document.getElementById("meniu");
 let meniuDeschis = false;
 
-// Adăugăm stiluri CSS pentru a asigura transformări corecte
-document.head.insertAdjacentHTML('beforeend', `
-<style>
-  /*
-  #hamburger {
-    position: relative;
-    width: 32px;
-    height: 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  #hamburger span {
-    display: block;
-    height: 4px;
-    width: 100%;
-    background-color: #1f2937;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-    transform-origin: center;
-  }
-  */
-</style>
-`);
+// todo add image lazy loading (.svg placeholder)
 
 // Event listener pentru click pe butonul hamburger
 hamburgerEl.addEventListener("click", function() {
