@@ -693,6 +693,9 @@
   .bg-orange-200 {
     background-color: var(--color-orange-200);
   }
+  .bg-stone-200 {
+    background-color: var(--color-stone-200);
+  }
   .bg-white {
     background-color: var(--color-white);
   }
