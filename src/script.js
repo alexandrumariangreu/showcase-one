@@ -4,7 +4,7 @@ const hamburgerEl = document.getElementById("hamburger");
 const meniuEl = document.getElementById("meniu");
 let meniuDeschis = false;
 
-// todo add image lazy loading (.svg placeholder)
+// todo add image lazy loading (.png placeholder)
 
 // Event listener pentru click pe butonul hamburger
 hamburgerEl.addEventListener("click", function() {
