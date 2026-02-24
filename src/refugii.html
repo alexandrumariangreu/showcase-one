@@ -14,6 +14,9 @@
 
 
     <script src="https://kit.fontawesome.com/1538963732.js" crossorigin="anonymous"></script>
+
+    <!-- Fancybox CSS (lipsește de obicei când “nu merge”) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
 </head>
 <body class="min-h-screen flex flex-col bg-stone-200">
 
@@ -87,6 +90,15 @@
 <footer class="container mx-auto px-5 bg-emerald-900 text-stone-200 text-center py-3 h-12 rounded-2xl">
     <span>&copy;2024 Greu Alexandru Marian</span>
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+
+<script>
+  // Inițializare explicită pentru v5
+  Fancybox.bind('[data-fancybox="gallery"]', {
+    // opțional: setări
+  });
+</script>
 
 <script src="script.js"></script>
 </body>
