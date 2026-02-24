@@ -12,6 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 
+    <!-- Fancybox (CSS) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.css"/>
 
     <script src="https://kit.fontawesome.com/1538963732.js" crossorigin="anonymous"></script>
 </head>
@@ -87,6 +89,14 @@
 <footer class="container mx-auto px-5 bg-emerald-900 text-stone-200 text-center py-3 h-12 rounded-2xl">
     <span>&copy;2024 Greu Alexandru Marian</span>
 </footer>
+
+<!-- Fancybox (JS) -->
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.umd.js"></script>
+<script>
+  Fancybox.bind('[data-fancybox="gallery"]', {
+    // opțional: setări
+  });
+</script>
 
 <script src="script.js"></script>
 </body>
