@@ -533,6 +533,15 @@
   .relative {
     position: relative;
   }
+  .right-0 {
+    right: calc(var(--spacing) * 0);
+  }
+  .bottom-0 {
+    bottom: calc(var(--spacing) * 0);
+  }
+  .left-0 {
+    left: calc(var(--spacing) * 0);
+  }
   .container {
     width: 100%;
     @media (width >= 40rem) {
@@ -621,8 +630,23 @@
   .h-1 {
     height: calc(var(--spacing) * 1);
   }
+  .h-1\/5 {
+    height: calc(1/5 * 100%);
+  }
   .h-2 {
     height: calc(var(--spacing) * 2);
+  }
+  .h-4 {
+    height: calc(var(--spacing) * 4);
+  }
+  .h-4\/5 {
+    height: calc(4/5 * 100%);
+  }
+  .h-5 {
+    height: calc(var(--spacing) * 5);
+  }
+  .h-5\/6 {
+    height: calc(5/6 * 100%);
   }
   .h-12 {
     height: calc(var(--spacing) * 12);
@@ -754,6 +778,12 @@
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
+  .bg-black {
+    background-color: var(--color-black);
+  }
+  .bg-black\/50 {
+    background-color: color-mix(in oklab, var(--color-black) 50%, transparent);
+  }
   .bg-emerald-900 {
     background-color: var(--color-emerald-900);
   }
@@ -778,6 +808,9 @@
   .p-6 {
     padding: calc(var(--spacing) * 6);
   }
+  .px-2 {
+    padding-inline: calc(var(--spacing) * 2);
+  }
   .px-3 {
     padding-inline: calc(var(--spacing) * 3);
   }
@@ -786,6 +819,9 @@
   }
   .px-6 {
     padding-inline: calc(var(--spacing) * 6);
+  }
+  .py-1 {
+    padding-block: calc(var(--spacing) * 1);
   }
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
@@ -811,12 +847,25 @@
     font-size: var(--text-xl);
     line-height: var(--tw-leading, var(--text-xl--line-height));
   }
+  .text-\[10px\] {
+    font-size: 10px;
+  }
+  .leading-tight {
+    --tw-leading: var(--leading-tight);
+    line-height: var(--leading-tight);
+  }
   .font-bold {
     --tw-font-weight: var(--font-weight-bold);
     font-weight: var(--font-weight-bold);
   }
   .text-neutral-600 {
     color: var(--color-neutral-600);
+  }
+  .text-neutral-700 {
+    color: var(--color-neutral-700);
+  }
+  .text-stone-100 {
+    color: var(--color-stone-100);
   }
   .text-stone-200 {
     color: var(--color-stone-200);
@@ -1032,6 +1081,11 @@
       grid-template-columns: 1.15fr 1fr;
     }
   }
+  .lg\:grid-cols-\[1\.1fr_1fr\] {
+    @media (width >= 64rem) {
+      grid-template-columns: 1.1fr 1fr;
+    }
+  }
   .lg\:grid-cols-\[1\.35fr_0\.65fr\] {
     @media (width >= 64rem) {
       grid-template-columns: 1.35fr 0.65fr;
@@ -1206,6 +1260,10 @@ img {
   syntax: "*";
   inherits: false;
   initial-value: solid;
+}
+@property --tw-leading {
+  syntax: "*";
+  inherits: false;
 }
 @property --tw-font-weight {
   syntax: "*";
