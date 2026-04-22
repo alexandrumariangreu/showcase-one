@@ -22,7 +22,7 @@
 
 <header class="bg-gradient-to-r from-emerald-100 to-green-200 border-b border-emerald-900/10">
   <div class="container mx-auto px-4 py-3">
-    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+    <div class="flex place-content-between w-full items-center">
       <div class="flex items-center gap-3">
         <div class="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 flex items-center justify-center">
           <img src="png/logo1.png" alt="Logo Retezat Guides" class="w-full h-full object-contain" />
@@ -32,17 +32,31 @@
         </h1>
       </div>
 
-      <nav class="flex flex-wrap gap-6 text-lg md:text-xl text-neutral-900 font-medium">
-        <a href="index.html" class="hover:text-emerald-800 transition">Home</a>
-        <a href="cabane.html" class="hover:text-emerald-800 transition">Tours</a>
-        <a href="refugii.html" class="hover:text-emerald-800 transition">Cabins</a>
-        <a href="trasee.html" class="hover:text-emerald-800 transition">Trails</a>
-        <a href="#" class="hover:text-emerald-800 transition">About Us</a>
-        <a href="#" class="hover:text-emerald-800 transition">Contact</a>
-      </nav>
+      <button
+              id="hamburger"
+              type="button"
+              aria-label="Deschide meniul"
+              aria-expanded="false"
+              class="ml-auto flex flex-col items-center justify-center gap-3"
+      >
+        <span class="w-12 sm:w-14 h-1 block bg-neutral-800 duration-300 transition-transform origin-center"></span>
+        <span class="w-12 sm:w-14 h-1 block bg-neutral-800 duration-300 transition-opacity origin-center"></span>
+        <span class="w-12 sm:w-14 h-1 block bg-neutral-800 duration-300 transition-transform origin-center"></span>
+      </button>
     </div>
   </div>
 </header>
+
+<div id="meniu" class="max-h-0 overflow-hidden w-full transition-all duration-500 ease-in-out bg-emerald-900">
+  <div class="container mx-auto px-4 py-4">
+    <div class="flex flex-col gap-3 py-2">
+      <a href="index.html" class="bg-green-200 rounded w-full px-3 py-3 text-center hover:bg-green-300 transition">Home</a>
+      <a href="cabane.html" class="bg-green-200 rounded w-full px-3 py-3 text-center hover:bg-green-300 transition">Cabane</a>
+      <a href="refugii.html" class="bg-green-200 rounded w-full px-3 py-3 text-center hover:bg-green-300 transition">Refugii</a>
+      <a href="trasee.html" class="bg-green-200 rounded w-full px-3 py-3 text-center hover:bg-green-300 transition">Trasee</a>
+    </div>
+  </div>
+</div>
 
 <div class="bg-gradient-to-r from-stone-50 to-emerald-50 border-b border-emerald-900/10">
   <div class="container mx-auto px-4 py-2 text-sm sm:text-base text-neutral-700">
@@ -56,12 +70,11 @@
 
 <main class="container mx-auto px-4 py-6 flex-1">
   <h2 class="text-center text-3xl sm:text-4xl md:text-5xl font-bold text-neutral-900 mb-5">
-    HARTĂ INTERACTIVĂ ȘI TRASEE
+    DESCOPERA RETEZATUL RESPONSABIL
   </h2>
 
   <section class="max-w-5xl mx-auto rounded-2xl shadow-2xl shadow-black/25 bg-white p-4 sm:p-5">
     <div class="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-4 items-stretch">
-
       <!-- Harta -->
       <div class="relative overflow-hidden rounded-xl min-h-[220px] sm:min-h-[260px] lg:min-h-[300px] bg-slate-900">
         <img
@@ -113,32 +126,20 @@
 
 <footer class="bg-gradient-to-r from-emerald-950 to-emerald-800 text-stone-100">
   <div class="container mx-auto px-4 py-4">
-    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-      <nav class="flex flex-wrap gap-6 text-lg justify-center md:justify-start">
-        <a href="#" class="hover:text-emerald-300 transition">Despre Noi</a>
-        <a href="#" class="hover:text-emerald-300 transition">Galerie</a>
-        <a href="#" class="hover:text-emerald-300 transition">Echipament Recomandat</a>
-        <a href="#" class="hover:text-emerald-300 transition">Contact</a>
-        <a href="#" class="hover:text-emerald-300 transition">Hărți</a>
-      </nav>
-
-      <div class="flex justify-center md:justify-end gap-4 text-2xl">
-        <a href="#" class="hover:text-emerald-300 transition"><i class="fa-brands fa-facebook"></i></a>
-        <a href="#" class="hover:text-emerald-300 transition"><i class="fa-brands fa-instagram"></i></a>
-        <a href="#" class="hover:text-emerald-300 transition"><i class="fa-brands fa-youtube"></i></a>
-      </div>
+    <div class="flex justify-center md:justify-end gap-4 text-2xl">
+      <a href="#" class="hover:text-emerald-300 transition"><i class="fa-brands fa-facebook"></i></a>
+      <a href="#" class="hover:text-emerald-300 transition"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" class="hover:text-emerald-300 transition"><i class="fa-brands fa-youtube"></i></a>
     </div>
 
     <p class="text-center text-sm mt-3 text-stone-200/90">
-      ©2024 Retezat Guides | Toate drepturile rezervate | Website realizat de Alexandru Marian Greu
+      ©2026 Retezat Guides | Toate drepturile rezervate | Website realizat de Alexandru Marian Greu
     </p>
   </div>
 </footer>
 
 <!-- Fancybox JS -->
 <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-<script>
-  Fancybox.bind('[data-fancybox="gallery"]', {});
-</script>
+<script src="script.js"></script>
 </body>
 </html>
