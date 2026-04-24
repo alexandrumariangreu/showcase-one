@@ -77,7 +77,7 @@ if (carouselImgA && carouselImgB) {
         indexImagine = urmatorIndex;
     };
 
-    setInterval(schimbaImaginea, 7000);
+    setInterval(schimbaImaginea, 5000);
 }
 
 if (typeof Fancybox !== "undefined") {
