@@ -52,16 +52,32 @@ const carouselImagini = [
     "img/retezat-4.jpg"
 ];
 
-const carouselImgEl = document.getElementById("carouselImagine");
+const carouselImgA = document.getElementById("carouselImagineA");
+const carouselImgB = document.getElementById("carouselImagineB");
 
-if (carouselImgEl) {
+if (carouselImgA && carouselImgB) {
     let indexImagine = 0;
+    let imagineActiva = carouselImgA;
+    let imagineInactiva = carouselImgB;
 
-    setInterval(() => {
-        indexImagine = (indexImagine + 1) % carouselImagini.length;
-        carouselImgEl.src = carouselImagini[indexImagine];
-        carouselImgEl.alt = `Retezat ${indexImagine + 1}`;
-    }, 5000);
+    const schimbaImaginea = () => {
+        const urmatorIndex = (indexImagine + 1) % carouselImagini.length;
+        imagineInactiva.src = carouselImagini[urmatorIndex];
+        imagineInactiva.alt = `Retezat ${urmatorIndex + 1}`;
+
+        imagineInactiva.classList.remove("opacity-0", "scale-105");
+        imagineInactiva.classList.add("opacity-100", "scale-100");
+
+        imagineActiva.classList.remove("opacity-100", "scale-100");
+        imagineActiva.classList.add("opacity-0", "scale-105");
+
+        const temp = imagineActiva;
+        imagineActiva = imagineInactiva;
+        imagineInactiva = temp;
+        indexImagine = urmatorIndex;
+    };
+
+    setInterval(schimbaImaginea, 7000);
 }
 
 if (typeof Fancybox !== "undefined") {
