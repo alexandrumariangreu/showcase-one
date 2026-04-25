@@ -1,85 +1,133 @@
 
-const hamburgerEl = document.getElementById("hamburger");
-const meniuEl = document.getElementById("meniu");
+document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.getElementById("hamburger");
+    const meniu = document.getElementById("meniu");
+    const overlay = document.getElementById("menuOverlay");
+    const inchideMeniu = document.getElementById("inchideMeniu");
 
-if (hamburgerEl && meniuEl) {
-    const spans = hamburgerEl.querySelectorAll("span");
+    if (!hamburger || !meniu) {
+        return;
+    }
+
     let meniuDeschis = false;
 
-    const deschideMeniu = () => {
-        const offset = spans[1].offsetTop - spans[0].offsetTop;
-
-        spans[0].style.transform = `translateY(${offset}px) rotate(45deg)`;
-        spans[1].style.opacity = "0";
-        spans[2].style.transform = `translateY(${-offset}px) rotate(-45deg)`;
-
-        meniuEl.classList.remove("max-h-0", "-translate-y-4", "opacity-0");
-        meniuEl.classList.add("max-h-96", "translate-y-0", "opacity-100");
-        hamburgerEl.setAttribute("aria-expanded", "true");
+    function deschideMeniu() {
         meniuDeschis = true;
-    };
 
-    const inchideMeniu = () => {
-        spans[0].style.transform = "";
-        spans[1].style.opacity = "1";
-        spans[2].style.transform = "";
+        hamburger.setAttribute("aria-expanded", "true");
 
-        meniuEl.classList.add("max-h-0", "-translate-y-4", "opacity-0");
-        meniuEl.classList.remove("max-h-96", "translate-y-0", "opacity-100");
-        hamburgerEl.setAttribute("aria-expanded", "false");
+        const liniiHamburger = hamburger.querySelectorAll("span");
+
+        if (liniiHamburger.length === 3) {
+            liniiHamburger[0].classList.add("rotate-45", "translate-y-4");
+            liniiHamburger[1].classList.add("opacity-0");
+            liniiHamburger[2].classList.add("-rotate-45", "-translate-y-4");
+        }
+
+        if (meniu.classList.contains("-translate-y-full")) {
+            meniu.classList.remove("-translate-y-full", "opacity-0", "pointer-events-none");
+            meniu.classList.add("translate-y-0", "opacity-100", "pointer-events-auto");
+        }
+
+        if (meniu.classList.contains("h-0")) {
+            meniu.classList.remove("h-0");
+            meniu.classList.add("h-64");
+        }
+
+        if (overlay) {
+            overlay.classList.remove("hidden");
+        }
+    }
+
+    function inchideMeniul() {
         meniuDeschis = false;
-    };
 
-    hamburgerEl.addEventListener("click", () => {
+        hamburger.setAttribute("aria-expanded", "false");
+
+        const liniiHamburger = hamburger.querySelectorAll("span");
+
+        if (liniiHamburger.length === 3) {
+            liniiHamburger[0].classList.remove("rotate-45", "translate-y-4");
+            liniiHamburger[1].classList.remove("opacity-0");
+            liniiHamburger[2].classList.remove("-rotate-45", "-translate-y-4");
+        }
+
+        if (meniu.classList.contains("translate-y-0")) {
+            meniu.classList.remove("translate-y-0", "opacity-100", "pointer-events-auto");
+            meniu.classList.add("-translate-y-full", "opacity-0", "pointer-events-none");
+        }
+
+        if (meniu.classList.contains("h-64")) {
+            meniu.classList.remove("h-64");
+            meniu.classList.add("h-0");
+        }
+
+        if (overlay) {
+            overlay.classList.add("hidden");
+        }
+    }
+
+    hamburger.addEventListener("click", () => {
         if (meniuDeschis) {
-            inchideMeniu();
+            inchideMeniul();
         } else {
             deschideMeniu();
         }
     });
 
-    window.addEventListener("resize", () => {
-        if (window.innerWidth >= 1024) {
-            inchideMeniu();
-        }
+    if (inchideMeniu) {
+        inchideMeniu.addEventListener("click", inchideMeniul);
+    }
+
+    if (overlay) {
+        overlay.addEventListener("click", inchideMeniul);
+    }
+
+    const linkuriMeniu = meniu.querySelectorAll("a");
+
+    linkuriMeniu.forEach((link) => {
+        link.addEventListener("click", () => {
+            inchideMeniul();
+        });
     });
-}
 
-const carouselImagini = [
-    "img/retezat-1.jpg",
-    "img/retezat-2.jpg",
-    "img/retezat-3.jpg",
-    "img/retezat-4.jpg"
-];
+    if (typeof Fancybox !== "undefined") {
+        Fancybox.bind('[data-fancybox="gallery"]', {});
+    }
 
-const carouselImgA = document.getElementById("carouselImagineA");
-const carouselImgB = document.getElementById("carouselImagineB");
+    const imaginiCarousel = [
+        "img/retezat-1.jpg",
+        "img/retezat-2.jpg",
+        "img/retezat-3.jpg",
+        "img/retezat-4.jpg",
+    ];
 
-if (carouselImgA && carouselImgB) {
-    let indexImagine = 0;
-    let imagineActiva = carouselImgA;
-    let imagineInactiva = carouselImgB;
+    const carouselImagineA = document.getElementById("carouselImagineA");
+    const carouselImagineB = document.getElementById("carouselImagineB");
 
-    const schimbaImaginea = () => {
-        const urmatorIndex = (indexImagine + 1) % carouselImagini.length;
-        imagineInactiva.src = carouselImagini[urmatorIndex];
-        imagineInactiva.alt = `Retezat ${urmatorIndex + 1}`;
+    if (carouselImagineA && carouselImagineB) {
+        let indexImagine = 0;
+        let imagineActivaEsteA = true;
 
-        imagineInactiva.classList.remove("opacity-0", "scale-105");
-        imagineInactiva.classList.add("opacity-100", "scale-100");
+        setInterval(() => {
+            indexImagine++;
 
-        imagineActiva.classList.remove("opacity-100", "scale-100");
-        imagineActiva.classList.add("opacity-0", "scale-105");
+            if (indexImagine >= imaginiCarousel.length) {
+                indexImagine = 0;
+            }
 
-        const temp = imagineActiva;
-        imagineActiva = imagineInactiva;
-        imagineInactiva = temp;
-        indexImagine = urmatorIndex;
-    };
+            const imagineActiva = imagineActivaEsteA ? carouselImagineA : carouselImagineB;
+            const imagineUrmatoare = imagineActivaEsteA ? carouselImagineB : carouselImagineA;
 
-    setInterval(schimbaImaginea, 5000);
-}
+            imagineUrmatoare.src = imaginiCarousel[indexImagine];
 
-if (typeof Fancybox !== "undefined") {
-    Fancybox.bind("[data-fancybox]", {});
-}
+            imagineUrmatoare.classList.remove("opacity-0", "scale-105");
+            imagineUrmatoare.classList.add("opacity-100", "scale-100");
+
+            imagineActiva.classList.remove("opacity-100", "scale-100");
+            imagineActiva.classList.add("opacity-0", "scale-105");
+
+            imagineActivaEsteA = !imagineActivaEsteA;
+        }, 3500);
+    }
+});
