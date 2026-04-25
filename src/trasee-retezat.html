@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trasee Retezat | Retezat Guides</title>
+    <link rel="stylesheet" href="output.css">
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/1538963732.js" crossorigin="anonymous"></script>
+
+    <!-- Fancybox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+</head>
+
+<body class="min-h-screen flex flex-col bg-white font-suse">
+
+<header class="bg-gradient-to-r from-emerald-100 to-green-200 border-b border-emerald-900/10 relative">
+    <div class="container mx-auto px-4 py-3">
+        <div class="flex place-content-between w-full items-center">
+            <div class="flex items-center gap-3">
+                <a href="index.html" aria-label="Mergi la homepage" class="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 flex items-center justify-center">
+                    <img src="png/logo1.png" alt="Logo Retezat Guides" class="w-full h-full object-contain" />
+                </a>
+
+                <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-emerald-950 font-serif tracking-wide">
+                    RETEZAT GUIDES
+                </h1>
+            </div>
+
+            <button
+                    id="hamburger"
+                    type="button"
+                    aria-label="Deschide meniul"
+                    aria-expanded="false"
+                    class="ml-auto flex flex-col items-center justify-center gap-3 rounded-2xl px-3 py-3 transition hover:bg-white/30"
+            >
+                <span class="w-12 sm:w-14 h-1 block bg-neutral-800 duration-300 transition-transform origin-center"></span>
+                <span class="w-12 sm:w-14 h-1 block bg-neutral-800 duration-300 transition-opacity origin-center"></span>
+                <span class="w-12 sm:w-14 h-1 block bg-neutral-800 duration-300 transition-transform origin-center"></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<div id="menuOverlay" class="fixed inset-0 z-40 hidden bg-black/30 backdrop-blur-sm"></div>
+
+<div
+        id="meniu"
+        class="fixed left-1/2 top-0 z-50 w-[calc(100%-2rem)] max-w-md -translate-x-1/2 -translate-y-full opacity-0 pointer-events-none overflow-hidden rounded-b-3xl border border-white/20 bg-white/95 shadow-2xl shadow-black/25 backdrop-blur-xl transition-all duration-500 ease-out"
+>
+    <div class="px-4 py-4 sm:px-5 sm:py-5">
+        <div class="mb-4 flex items-center justify-between border-b border-emerald-900/10 pb-3">
+            <span class="text-sm font-semibold tracking-widest text-emerald-950/70 uppercase">Meniu</span>
+
+            <button
+                    id="inchideMeniu"
+                    type="button"
+                    aria-label="Închide meniul"
+                    class="rounded-full px-3 py-1 text-sm text-emerald-900 hover:bg-emerald-100 transition"
+            >
+                ✕
+            </button>
+        </div>
+
+        <div class="flex flex-col gap-3">
+            <a href="index.html" class="rounded-2xl bg-gradient-to-r from-emerald-100 to-green-200 px-4 py-3 text-center font-medium text-emerald-950 shadow-sm transition hover:shadow-md hover:scale-[1.01]">
+                Home
+            </a>
+
+            <a href="cabane-refugii-stane.html" class="rounded-2xl bg-gradient-to-r from-emerald-100 to-green-200 px-4 py-3 text-center font-medium text-emerald-950 shadow-sm transition hover:shadow-md hover:scale-[1.01]">
+                Cabane, Refugii si Stâne
+            </a>
+
+            <a href="cazare-zona-retezat.html" class="rounded-2xl bg-gradient-to-r from-emerald-100 to-green-200 px-4 py-3 text-center font-medium text-emerald-950 shadow-sm transition hover:shadow-md hover:scale-[1.01]">
+                Cazare Zona Retezat
+            </a>
+
+            <a href="trasee-retezat.html" class="rounded-2xl bg-gradient-to-r from-emerald-100 to-green-200 px-4 py-3 text-center font-medium text-emerald-950 shadow-sm transition hover:shadow-md hover:scale-[1.01]">
+                Trasee din Masivul Retezat
+            </a>
+            <a href="evenimente-retezat.html" class="rounded-2xl bg-gradient-to-r from-emerald-100 to-green-200 px-4 py-3 text-center font-medium text-emerald-950 shadow-sm transition hover:shadow-md hover:scale-[1.01]">Evenimente din zona Retezatului</a>
+        </div>
+    </div>
+</div>
+
+<div class="bg-gradient-to-r from-stone-50 to-emerald-50 border-b border-emerald-900/10">
+    <div class="container mx-auto px-4 py-2 text-sm sm:text-base text-neutral-700">
+        <span>Acasă</span>
+        <span class="mx-2">&gt;</span>
+        <span>Trasee Retezat</span>
+    </div>
+</div>
+
+<main class="container mx-auto px-4 py-6 flex-1">
+    <h2 class="text-center text-3xl sm:text-4xl md:text-5xl font-bold text-neutral-900 mb-8">
+        Trasee Retezat
+    </h2>
+
+    <section class="max-w-6xl mx-auto rounded-2xl shadow-2xl shadow-black/25 bg-white p-4 sm:p-6">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 rounded-xl bg-emerald-900 p-4 sm:p-6">
+            <a href="img/amenajari-01.avif" data-fancybox="gallery" class="rounded-lg overflow-hidden bg-green-200 p-2 shadow-lg shadow-black/30 hover:shadow-xl transition hover:scale-105 duration-300">
+                <img src="img/amenajari-01.avif" alt="Traseu Retezat 1" class="w-full h-40 object-cover rounded-md">
+            </a>
+
+            <a href="img/amenajari-02.avif" data-fancybox="gallery" class="rounded-lg overflow-hidden bg-green-200 p-2 shadow-lg shadow-black/30 hover:shadow-xl transition hover:scale-105 duration-300">
+                <img src="img/amenajari-02.avif" alt="Traseu Retezat 2" class="w-full h-40 object-cover rounded-md">
+            </a>
+
+            <a href="img/amenajari-03.avif" data-fancybox="gallery" class="rounded-lg overflow-hidden bg-green-200 p-2 shadow-lg shadow-black/30 hover:shadow-xl transition hover:scale-105 duration-300">
+                <img src="img/amenajari-03.avif" alt="Traseu Retezat 3" class="w-full h-40 object-cover rounded-md">
+            </a>
+
+            <a href="img/amenajari-04.avif" data-fancybox="gallery" class="rounded-lg overflow-hidden bg-green-200 p-2 shadow-lg shadow-black/30 hover:shadow-xl transition hover:scale-105 duration-300">
+                <img src="img/amenajari-04.avif" alt="Traseu Retezat 4" class="w-full h-40 object-cover rounded-md">
+            </a>
+
+            <a href="img/amenajari-05.avif" data-fancybox="gallery" class="rounded-lg overflow-hidden bg-green-200 p-2 shadow-lg shadow-black/30 hover:shadow-xl transition hover:scale-105 duration-300">
+                <img src="img/amenajari-05.avif" alt="Traseu Retezat 5" class="w-full h-40 object-cover rounded-md">
+            </a>
+
+            <a href="img/amenajari-06.avif" data-fancybox="gallery" class="rounded-lg overflow-hidden bg-green-200 p-2 shadow-lg shadow-black/30 hover:shadow-xl transition hover:scale-105 duration-300">
+                <img src="img/amenajari-06.avif" alt="Traseu Retezat 6" class="w-full h-40 object-cover rounded-md">
+            </a>
+
+            <a href="img/amenajari-07.avif" data-fancybox="gallery" class="rounded-lg overflow-hidden bg-green-200 p-2 shadow-lg shadow-black/30 hover:shadow-xl transition hover:scale-105 duration-300">
+                <img src="img/amenajari-07.avif" alt="Traseu Retezat 7" class="w-full h-40 object-cover rounded-md">
+            </a>
+
+            <a href="img/amenajari-08.avif" data-fancybox="gallery" class="rounded-lg overflow-hidden bg-green-200 p-2 shadow-lg shadow-black/30 hover:shadow-xl transition hover:scale-105 duration-300">
+                <img src="img/amenajari-08.avif" alt="Traseu Retezat 8" class="w-full h-40 object-cover rounded-md">
+            </a>
+
+            <a href="img/amenajari-09.avif" data-fancybox="gallery" class="rounded-lg overflow-hidden bg-green-200 p-2 shadow-lg shadow-black/30 hover:shadow-xl transition hover:scale-105 duration-300">
+                <img src="img/amenajari-09.avif" alt="Traseu Retezat 9" class="w-full h-40 object-cover rounded-md">
+            </a>
+
+            <a href="img/amenajari-10.avif" data-fancybox="gallery" class="rounded-lg overflow-hidden bg-green-200 p-2 shadow-lg shadow-black/30 hover:shadow-xl transition hover:scale-105 duration-300">
+                <img src="img/amenajari-10.avif" alt="Traseu Retezat 10" class="w-full h-40 object-cover rounded-md">
+            </a>
+        </div>
+
+        <h3 class="w-full text-center text-xl text-green-900 mt-8">
+            Trasee turistice din Masivul Retezat
+        </h3>
+    </section>
+</main>
+
+<footer class="bg-gradient-to-r from-emerald-950 to-emerald-800 text-stone-100">
+    <div class="container mx-auto px-4 py-2">
+        <div class="flex justify-center md:justify-end gap-2 text-xl">
+            <a href="#" class="hover:text-emerald-300 transition"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" class="hover:text-emerald-300 transition"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="hover:text-emerald-300 transition"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+
+        <p class="text-center text-xs mt-1 text-stone-200/90">
+            ©2026 Retezat Guides | Toate drepturile rezervate | Website realizat de Alexandru Marian Greu
+        </p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
