@@ -2,132 +2,120 @@
 document.addEventListener("DOMContentLoaded", () => {
     const hamburger = document.getElementById("hamburger");
     const meniu = document.getElementById("meniu");
-    const overlay = document.getElementById("menuOverlay");
+    const menuOverlay = document.getElementById("menuOverlay");
     const inchideMeniu = document.getElementById("inchideMeniu");
+    const hamburgerLines = hamburger ? hamburger.querySelectorAll("span") : [];
 
-    if (!hamburger || !meniu) {
-        return;
-    }
+    function deschideMeniul() {
+        if (!hamburger || !meniu || !menuOverlay) {
+            return;
+        }
 
-    let meniuDeschis = false;
+        meniu.classList.remove("-translate-y-full", "opacity-0", "pointer-events-none");
+        meniu.classList.add("translate-y-0", "opacity-100", "pointer-events-auto");
 
-    function deschideMeniu() {
-        meniuDeschis = true;
+        menuOverlay.classList.remove("hidden");
 
         hamburger.setAttribute("aria-expanded", "true");
 
-        const liniiHamburger = hamburger.querySelectorAll("span");
-
-        if (liniiHamburger.length === 3) {
-            liniiHamburger[0].classList.add("rotate-45", "translate-y-4");
-            liniiHamburger[1].classList.add("opacity-0");
-            liniiHamburger[2].classList.add("-rotate-45", "-translate-y-4");
-        }
-
-        if (meniu.classList.contains("-translate-y-full")) {
-            meniu.classList.remove("-translate-y-full", "opacity-0", "pointer-events-none");
-            meniu.classList.add("translate-y-0", "opacity-100", "pointer-events-auto");
-        }
-
-        if (meniu.classList.contains("h-0")) {
-            meniu.classList.remove("h-0");
-            meniu.classList.add("h-64");
-        }
-
-        if (overlay) {
-            overlay.classList.remove("hidden");
+        if (hamburgerLines.length === 3) {
+            hamburgerLines[0].classList.add("translate-y-4", "rotate-45");
+            hamburgerLines[1].classList.add("opacity-0");
+            hamburgerLines[2].classList.add("-translate-y-4", "-rotate-45");
         }
     }
 
     function inchideMeniul() {
-        meniuDeschis = false;
+        if (!hamburger || !meniu || !menuOverlay) {
+            return;
+        }
+
+        meniu.classList.add("-translate-y-full", "opacity-0", "pointer-events-none");
+        meniu.classList.remove("translate-y-0", "opacity-100", "pointer-events-auto");
+
+        menuOverlay.classList.add("hidden");
 
         hamburger.setAttribute("aria-expanded", "false");
 
-        const liniiHamburger = hamburger.querySelectorAll("span");
-
-        if (liniiHamburger.length === 3) {
-            liniiHamburger[0].classList.remove("rotate-45", "translate-y-4");
-            liniiHamburger[1].classList.remove("opacity-0");
-            liniiHamburger[2].classList.remove("-rotate-45", "-translate-y-4");
-        }
-
-        if (meniu.classList.contains("translate-y-0")) {
-            meniu.classList.remove("translate-y-0", "opacity-100", "pointer-events-auto");
-            meniu.classList.add("-translate-y-full", "opacity-0", "pointer-events-none");
-        }
-
-        if (meniu.classList.contains("h-64")) {
-            meniu.classList.remove("h-64");
-            meniu.classList.add("h-0");
-        }
-
-        if (overlay) {
-            overlay.classList.add("hidden");
+        if (hamburgerLines.length === 3) {
+            hamburgerLines[0].classList.remove("translate-y-4", "rotate-45");
+            hamburgerLines[1].classList.remove("opacity-0");
+            hamburgerLines[2].classList.remove("-translate-y-4", "-rotate-45");
         }
     }
 
-    hamburger.addEventListener("click", () => {
-        if (meniuDeschis) {
-            inchideMeniul();
-        } else {
-            deschideMeniu();
-        }
-    });
+    if (hamburger && meniu && menuOverlay) {
+        hamburger.addEventListener("click", () => {
+            const esteDeschis = hamburger.getAttribute("aria-expanded") === "true";
+
+            if (esteDeschis) {
+                inchideMeniul();
+            } else {
+                deschideMeniul();
+            }
+        });
+
+        menuOverlay.addEventListener("click", inchideMeniul);
+    }
 
     if (inchideMeniu) {
         inchideMeniu.addEventListener("click", inchideMeniul);
     }
 
-    if (overlay) {
-        overlay.addEventListener("click", inchideMeniul);
-    }
-
-    const linkuriMeniu = meniu.querySelectorAll("a");
-
-    linkuriMeniu.forEach((link) => {
-        link.addEventListener("click", () => {
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
             inchideMeniul();
-        });
+        }
     });
 
     if (typeof Fancybox !== "undefined") {
-        Fancybox.bind('[data-fancybox="gallery"]', {});
+        Fancybox.bind("[data-fancybox]", {});
     }
 
-    const imaginiCarousel = [
-        "img/retezat-1.jpg",
-        "img/retezat-2.jpg",
-        "img/retezat-3.jpg",
-        "img/retezat-4.jpg",
+    const cabanaButaImagini = [
+        "img/cabana-buta-retezat-exterior-01.avif",
+        "img/amenajari-02.avif",
+        "img/amenajari-03.avif",
+        "img/amenajari-04.avif"
     ];
 
-    const carouselImagineA = document.getElementById("carouselImagineA");
-    const carouselImagineB = document.getElementById("carouselImagineB");
+    const cabanaButaA = document.getElementById("cabanaButaCarouselA");
+    const cabanaButaB = document.getElementById("cabanaButaCarouselB");
 
-    if (carouselImagineA && carouselImagineB) {
-        let indexImagine = 0;
-        let imagineActivaEsteA = true;
+    if (cabanaButaA && cabanaButaB) {
+        let cabanaButaIndex = 0;
+        let cabanaButaEsteAActiva = true;
 
         setInterval(() => {
-            indexImagine++;
+            cabanaButaIndex = (cabanaButaIndex + 1) % cabanaButaImagini.length;
 
-            if (indexImagine >= imaginiCarousel.length) {
-                indexImagine = 0;
+            if (cabanaButaEsteAActiva) {
+                cabanaButaB.src = cabanaButaImagini[cabanaButaIndex];
+
+                if (cabanaButaB.parentElement) {
+                    cabanaButaB.parentElement.href = cabanaButaImagini[cabanaButaIndex];
+                }
+
+                cabanaButaB.classList.remove("opacity-0", "scale-105");
+                cabanaButaB.classList.add("opacity-100", "scale-100");
+
+                cabanaButaA.classList.remove("opacity-100", "scale-100");
+                cabanaButaA.classList.add("opacity-0", "scale-105");
+            } else {
+                cabanaButaA.src = cabanaButaImagini[cabanaButaIndex];
+
+                if (cabanaButaA.parentElement) {
+                    cabanaButaA.parentElement.href = cabanaButaImagini[cabanaButaIndex];
+                }
+
+                cabanaButaA.classList.remove("opacity-0", "scale-105");
+                cabanaButaA.classList.add("opacity-100", "scale-100");
+
+                cabanaButaB.classList.remove("opacity-100", "scale-100");
+                cabanaButaB.classList.add("opacity-0", "scale-105");
             }
 
-            const imagineActiva = imagineActivaEsteA ? carouselImagineA : carouselImagineB;
-            const imagineUrmatoare = imagineActivaEsteA ? carouselImagineB : carouselImagineA;
-
-            imagineUrmatoare.src = imaginiCarousel[indexImagine];
-
-            imagineUrmatoare.classList.remove("opacity-0", "scale-105");
-            imagineUrmatoare.classList.add("opacity-100", "scale-100");
-
-            imagineActiva.classList.remove("opacity-100", "scale-100");
-            imagineActiva.classList.add("opacity-0", "scale-105");
-
-            imagineActivaEsteA = !imagineActivaEsteA;
+            cabanaButaEsteAActiva = !cabanaButaEsteAActiva;
         }, 3500);
     }
 });

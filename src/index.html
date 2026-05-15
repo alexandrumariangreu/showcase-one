@@ -157,6 +157,44 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<script>
+  const cabanaButaImagini = [
+    "img/amenajari-01.avif",
+    "img/amenajari-02.avif",
+    "img/amenajari-03.avif",
+    "img/amenajari-04.avif"
+  ];
+
+  const cabanaButaA = document.getElementById("cabanaButaCarouselA");
+  const cabanaButaB = document.getElementById("cabanaButaCarouselB");
+
+  if (cabanaButaA && cabanaButaB) {
+    let cabanaButaIndex = 0;
+    let cabanaButaEsteAActiva = true;
+
+    setInterval(() => {
+      cabanaButaIndex = (cabanaButaIndex + 1) % cabanaButaImagini.length;
+
+      if (cabanaButaEsteAActiva) {
+        cabanaButaB.src = cabanaButaImagini[cabanaButaIndex];
+        cabanaButaB.classList.remove("opacity-0", "scale-105");
+        cabanaButaB.classList.add("opacity-100", "scale-100");
+
+        cabanaButaA.classList.remove("opacity-100", "scale-100");
+        cabanaButaA.classList.add("opacity-0", "scale-105");
+      } else {
+        cabanaButaA.src = cabanaButaImagini[cabanaButaIndex];
+        cabanaButaA.classList.remove("opacity-0", "scale-105");
+        cabanaButaA.classList.add("opacity-100", "scale-100");
+
+        cabanaButaB.classList.remove("opacity-100", "scale-100");
+        cabanaButaB.classList.add("opacity-0", "scale-105");
+      }
+
+      cabanaButaEsteAActiva = !cabanaButaEsteAActiva;
+    }, 3500);
+  }
+</script>
 <script src="script.js"></script>
 </body>
 </html>
