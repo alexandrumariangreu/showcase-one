@@ -74,9 +74,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const cabanaButaImagini = [
         "img/cabana-buta-retezat-exterior-01.avif",
-        "img/amenajari-02.avif",
-        "img/amenajari-03.avif",
-        "img/amenajari-04.avif"
+        "img/cabana-buta-retezat-exterior-02.avif",
+        "img/cabana-buta-retezat-vedere-01.avif",
+        "img/cabana-buta-retezat-masa-01.avif",
+        "img/cabana-buta-retezat-ceaun-01.avif",
+        "img/cabana-buta-retezat-grup-01.avif"
     ];
 
     const cabanaButaA = document.getElementById("cabanaButaCarouselA");
