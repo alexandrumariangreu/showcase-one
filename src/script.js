@@ -72,6 +72,47 @@ document.addEventListener("DOMContentLoaded", () => {
         Fancybox.bind("[data-fancybox]", {});
     }
 
+    const homepageCarouselImagini = [
+        "img/retezat-1.jpg",
+        "img/retezat-2.jpg",
+        "img/retezat-3.jpg",
+        "img/retezat-4.jpg"
+    ];
+
+    const homepageCarouselA = document.getElementById("carouselImagineA");
+    const homepageCarouselB = document.getElementById("carouselImagineB");
+
+    if (homepageCarouselA && homepageCarouselB) {
+        let homepageCarouselIndex = 0;
+        let homepageCarouselEsteAActiva = true;
+
+        setInterval(() => {
+            homepageCarouselIndex = (homepageCarouselIndex + 1) % homepageCarouselImagini.length;
+
+            if (homepageCarouselEsteAActiva) {
+                homepageCarouselB.src = homepageCarouselImagini[homepageCarouselIndex];
+                homepageCarouselB.alt = `Retezat ${homepageCarouselIndex + 1}`;
+
+                homepageCarouselB.classList.remove("opacity-0", "scale-105");
+                homepageCarouselB.classList.add("opacity-100", "scale-100");
+
+                homepageCarouselA.classList.remove("opacity-100", "scale-100");
+                homepageCarouselA.classList.add("opacity-0", "scale-105");
+            } else {
+                homepageCarouselA.src = homepageCarouselImagini[homepageCarouselIndex];
+                homepageCarouselA.alt = `Retezat ${homepageCarouselIndex + 1}`;
+
+                homepageCarouselA.classList.remove("opacity-0", "scale-105");
+                homepageCarouselA.classList.add("opacity-100", "scale-100");
+
+                homepageCarouselB.classList.remove("opacity-100", "scale-100");
+                homepageCarouselB.classList.add("opacity-0", "scale-105");
+            }
+
+            homepageCarouselEsteAActiva = !homepageCarouselEsteAActiva;
+        }, 5000);
+    }
+
     const cabanaButaImagini = [
         "img/cabana-buta-retezat-exterior-01.avif",
         "img/cabana-buta-retezat-exterior-02.avif",
