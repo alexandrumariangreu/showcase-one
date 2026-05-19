@@ -125,6 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const cabanaButaA = document.getElementById("cabanaButaCarouselA");
     const cabanaButaB = document.getElementById("cabanaButaCarouselB");
 
+    // ... existing code ...
     if (cabanaButaA && cabanaButaB) {
         let cabanaButaIndex = 0;
         let cabanaButaEsteAActiva = true;
@@ -159,6 +160,53 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             cabanaButaEsteAActiva = !cabanaButaEsteAActiva;
+        }, 3500);
+    }
+
+    const cabanaPietreleImagini = [
+        "img/cabana-pietrele-retezat-1480m-01.avif",
+        "img/cabana-pietrele-retezat-1480m-02.avif",
+        "img/cabana-pietrele-muntii-retezat.avif",
+        "img/retezat-indicator-trasee-cabana-pietrele.avif"
+    ];
+
+    const cabanaPietreleA = document.getElementById("cabanaPietreleCarouselA");
+    const cabanaPietreleB = document.getElementById("cabanaPietreleCarouselB");
+
+    if (cabanaPietreleA && cabanaPietreleB) {
+        let cabanaPietreleIndex = 0;
+        let cabanaPietreleEsteAActiva = true;
+
+        setInterval(() => {
+            cabanaPietreleIndex = (cabanaPietreleIndex + 1) % cabanaPietreleImagini.length;
+
+            if (cabanaPietreleEsteAActiva) {
+                cabanaPietreleB.src = cabanaPietreleImagini[cabanaPietreleIndex];
+
+                if (cabanaPietreleB.parentElement) {
+                    cabanaPietreleB.parentElement.href = cabanaPietreleImagini[cabanaPietreleIndex];
+                }
+
+                cabanaPietreleB.classList.remove("opacity-0", "scale-105");
+                cabanaPietreleB.classList.add("opacity-100", "scale-100");
+
+                cabanaPietreleA.classList.remove("opacity-100", "scale-100");
+                cabanaPietreleA.classList.add("opacity-0", "scale-105");
+            } else {
+                cabanaPietreleA.src = cabanaPietreleImagini[cabanaPietreleIndex];
+
+                if (cabanaPietreleA.parentElement) {
+                    cabanaPietreleA.parentElement.href = cabanaPietreleImagini[cabanaPietreleIndex];
+                }
+
+                cabanaPietreleA.classList.remove("opacity-0", "scale-105");
+                cabanaPietreleA.classList.add("opacity-100", "scale-100");
+
+                cabanaPietreleB.classList.remove("opacity-100", "scale-100");
+                cabanaPietreleB.classList.add("opacity-0", "scale-105");
+            }
+
+            cabanaPietreleEsteAActiva = !cabanaPietreleEsteAActiva;
         }, 3500);
     }
 });
