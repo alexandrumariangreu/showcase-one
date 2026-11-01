@@ -209,4 +209,4 @@ document.addEventListener("DOMContentLoaded", () => {
             cabanaPietreleEsteAActiva = !cabanaPietreleEsteAActiva;
         }, 3500);
     }
-});
+});z
